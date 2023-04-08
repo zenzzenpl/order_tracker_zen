@@ -1,16 +1,80 @@
-# order_tracker_zen
+# Order Tracker
+Make a fabulous order tracker for you e-commerce app is no time.
 
-A new Flutter project.
+#### Showcase
+![Untitled](https://user-images.githubusercontent.com/102783954/230720601-5ccb5f58-b675-470a-ab4c-154cb22113ad.gif)
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+|Title|Other Order Tackers|Order Tracker Zen
+|-|--|--|
+| Order Tracking Functionality | ✅ | ✅ |
+| Animations | ✅ | ✅ |
+| Custom Order Headings | 👎🏻 | ✅ |
+| Use Custom Styles | 👎🏻 | ✅ |
+| Toggle bitween expanded and shrinked just with one variable | 👎🏻 | ✅ |
+| Email Support By Zenzzen | 👎🏻 | ✅ |
 
-A few resources to get you started if this is your first Flutter project:
+**Our team is always happy to help tech enthusiasts like you, you can email us on dev_support@zenzzen.com in case if you find any difficulty** 
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## How to get started❓ 🤔
+You can simply add the dependency from **cli** like:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+    flutter pub add order_tracker_zen
+**Or** you can add it in your **pubspec.yaml** like:
+
+    dependencies:
+		order_tracker_zen:
+	
+## How to use❓ 🤔
+Using it is as **easy as** create a **TextFormField**, Don't beleave? Let me show you:
+
+```
+OrderTrackerZen(
+	tracker_data: [
+		TrackerData(
+			title: "Order Place",
+			date: "Sat, 8 Apr '22",
+			tracker_details: [
+				TrackerDetails(
+					title: "Your order was placed on Zenzzen",
+					datetime: "Sat, 8 Apr '22 - 17:17",
+				),
+				TrackerDetails(
+					title: "Zenzzen Arranged A Callback Request",
+					datetime: "Sat, 8 Apr '22 - 17:42",
+				),
+			],
+		),
+		TrackerData(
+			title: "Order Shipped",
+			date: "Sat, 8 Apr '22",
+			tracker_details: [
+				TrackerDetails(
+					title: "Your order was shipped with MailDeli",
+					datetime: "Sat, 8 Apr '22 - 17:50",
+				),
+			],
+		),
+		TrackerData(
+			title: "Order Delivered",
+			date: "Sat,8 Apr '22",
+			tracker_details: [
+				TrackerDetails(
+					title: "You received your order, by MailDeli",
+					datetime: "Sat, 8 Apr '22 - 17:51",
+				),
+			],
+		),
+	],
+)
+```
+**Looks Looooong?** Dont worrrrrryyyyy.....
+This is because it hardcoded data, you your case you must be using loops here. Ok!
+
+**Let me explain about `OrderTrackerZen`, `TrackerData` and `TrackerDetails` .**
+
+ - `OrderTrackerZen` is main container of whole order tracker, like <img width="487" alt="image" src="https://user-images.githubusercontent.com/102783954/230720647-97dad7f5-fcb7-4c8f-9f26-e3ac04e94bf6.png">
+ - `TrackerData` is container of that contains tracking details <img width="487" alt="image" src="https://user-images.githubusercontent.com/102783954/230720666-9d501e90-a119-4847-a936-350d0d2afe8d.png">
+ - `TrackerDetails` is a single tracking tracking detail <img width="487" alt="image" src="https://user-images.githubusercontent.com/102783954/230720673-817fd477-aff6-42a5-8398-210da9ecebd6.png">
+
+**This is what Zenzzen Team made for you specially 😊, Now it's your responsibility to make ground-breaking app that rocks 🤘🏻**
