@@ -73,8 +73,11 @@ This is because it hardcoded data, you your case you must be using loops here. O
 
 **Let me explain about `OrderTrackerZen`, `TrackerData` and `TrackerDetails` .**
 
- - `OrderTrackerZen` is main container of whole order tracker, like <img width="487" alt="image" src="https://user-images.githubusercontent.com/102783954/230720647-97dad7f5-fcb7-4c8f-9f26-e3ac04e94bf6.png">
- - `TrackerData` is container of that contains tracking details <img width="487" alt="image" src="https://user-images.githubusercontent.com/102783954/230720666-9d501e90-a119-4847-a936-350d0d2afe8d.png">
- - `TrackerDetails` is a single tracking tracking detail <img width="487" alt="image" src="https://user-images.githubusercontent.com/102783954/230720673-817fd477-aff6-42a5-8398-210da9ecebd6.png">
+ - `OrderTrackerZen` is main container of whole order tracker, like
+ <img width="487" alt="image" src="https://user-images.githubusercontent.com/102783954/230720647-97dad7f5-fcb7-4c8f-9f26-e3ac04e94bf6.png">
+ - `TrackerData` is container of that contains tracking details
+ <img width="487" alt="image" src="https://user-images.githubusercontent.com/102783954/230720666-9d501e90-a119-4847-a936-350d0d2afe8d.png">
+ - `TrackerDetails` is a single tracking tracking detail
+ <img width="487" alt="image" src="https://user-images.githubusercontent.com/102783954/230720673-817fd477-aff6-42a5-8398-210da9ecebd6.png">
 
 **This is what Zenzzen Team made for you specially 😊, Now it's your responsibility to make ground-breaking app that rocks 🤘🏻**
