@@ -33,3 +33,7 @@ Feature Updates
 # 0.0.0+9
 
 Feature Updates
+
+# 1.0.0+1
+
+First Stable Release

@@ -70,6 +70,9 @@ class OrderTrackerZen extends StatelessWidget {
   /// The duration of the animation in milliseconds.
   final int animation_duration;
 
+  /// If the widget is shrinked or not. If true, the widget will be shrinked and will only show title and time.
+  final bool isShrinked;
+
   /// Creates an OrderTrackerZen widget.
   ///
   /// The [tracker_data] must not be null, and the [animation_duration] must be a positive integer.
@@ -82,6 +85,7 @@ class OrderTrackerZen extends StatelessWidget {
     this.text_primary_color,
     this.text_secondary_color,
     this.animation_duration = 1500,
+    this.isShrinked = false,
   });
 
   @override
@@ -103,25 +107,43 @@ class OrderTrackerZen extends StatelessWidget {
           ),
           builder: (context, value, child) {
             // Build the main tracker item
-            return OrderTrackerListItem(
-              success_color: success_color,
-              background_color: background_color,
-              screen_background_color: screen_background_color,
-              title: OrderTitleAndDate(
-                title: data.title,
-                date: data.date,
-                text_primary_color: text_primary_color,
-                text_secondary_color: text_secondary_color,
+            return TweenAnimationBuilder(
+              builder: (context, val, child) {
+                return val == 1 || val == 0
+                    ? OrderTrackerListItem(
+                        success_color: success_color,
+                        background_color: background_color,
+                        screen_background_color: screen_background_color,
+                        title: OrderTitleAndDate(
+                          isShrinked: isShrinked,
+                          title: data.title,
+                          date: data.date,
+                          text_primary_color: text_primary_color,
+                          text_secondary_color: text_secondary_color,
+                        ),
+                        detailListItems: isShrinked
+                            ? []
+                            : [
+                                for (var i = 0;
+                                    i < data.tracker_details.length;
+                                    i++)
+                                  OrderTrackerDetails(
+                                    title: data.tracker_details[i].title,
+                                    datetime: data.tracker_details[i].datetime,
+                                  ),
+                              ],
+                        isLastItem: index == tracker_data.length - 1,
+                        showLine: value > index,
+                      )
+                    : Container();
+              },
+              tween: Tween<double>(
+                begin: isShrinked ? 0 : 1,
+                end: isShrinked ? 1 : 0,
               ),
-              detailListItems: [
-                for (var i = 0; i < data.tracker_details.length; i++)
-                  OrderTrackerDetails(
-                    title: data.tracker_details[i].title,
-                    datetime: data.tracker_details[i].datetime,
-                  ),
-              ],
-              isLastItem: index == tracker_data.length - 1,
-              showLine: value > index,
+              duration: Duration(
+                milliseconds: 50,
+              ),
             );
           },
         );
@@ -176,7 +198,10 @@ class OrderTrackerListItem extends StatefulWidget {
 }
 
 class _OrderTrackerListItemState extends State<OrderTrackerListItem> {
+  /// The key of the row widget. Used to get the height of the row.
   GlobalKey rowKey = GlobalKey();
+
+  /// Gets the height of the row.
   double getRowHeight() {
     final RenderBox? rowRenderBox =
         rowKey.currentContext?.findRenderObject() as RenderBox?;
@@ -338,6 +363,9 @@ class OrderTitleAndDate extends StatelessWidget {
   /// The secondary text color used in the widget.
   final Color? text_secondary_color;
 
+  /// If the widget is shrinked or not. If true, the widget will be shrinked and will only show title and time.
+  final bool isShrinked;
+
   /// Creates an OrderTitleAndDate widget.
   ///
   /// The [title] and [date] must not be null.
@@ -347,34 +375,41 @@ class OrderTitleAndDate extends StatelessWidget {
     required this.date,
     this.text_primary_color,
     this.text_secondary_color,
+    this.isShrinked = false,
   });
 
   @override
   Widget build(BuildContext context) {
+    var children = <Widget>[
+      Text(
+        title,
+        style: TextStyle(
+          color: text_primary_color ?? Colors.black,
+          fontSize: 15,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      SizedBox(width: isShrinked ? 0 : 5, height: isShrinked ? 5 : 0),
+      Text(
+        date,
+        style: TextStyle(
+          color: text_secondary_color ?? Colors.grey,
+          fontSize: isShrinked ? 13 : 15,
+          fontWeight: FontWeight.normal,
+        ),
+      ),
+    ];
     return Padding(
       padding: EdgeInsets.only(left: 8, right: 8, bottom: 8, top: 0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(
-            title,
-            style: TextStyle(
-              color: text_primary_color ?? Colors.black,
-              fontSize: 15,
-              fontWeight: FontWeight.bold,
+      child: isShrinked
+          ? Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: children,
+            )
+          : Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: children,
             ),
-          ),
-          SizedBox(width: 5),
-          Text(
-            date,
-            style: TextStyle(
-              color: text_secondary_color ?? Colors.grey,
-              fontSize: 15,
-              fontWeight: FontWeight.normal,
-            ),
-          ),
-        ],
-      ),
     );
   }
 }
