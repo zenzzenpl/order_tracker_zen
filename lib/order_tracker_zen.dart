@@ -6,7 +6,13 @@ import 'package:flutter/material.dart';
 ///
 /// This model includes a title, date, and list of tracker details.
 class TrackerData {
-  final String title, date;
+  /// The title of the tracker data.
+  final String title;
+
+  /// The date associated with the tracker data.
+  final String date;
+
+  /// A list of tracker details.
   final List<TrackerDetails> tracker_details;
 
   /// Creates a new tracker data instance.
@@ -23,7 +29,11 @@ class TrackerData {
 ///
 /// This model includes a title and a datetime.
 class TrackerDetails {
-  final String title, datetime;
+  /// The title of the tracker details.
+  final String title;
+
+  /// The datetime associated with the tracker details.
+  final String datetime;
 
   /// Creates a new tracker details instance.
   ///
@@ -39,12 +49,25 @@ class TrackerDetails {
 /// This widget takes a list of `TrackerData` as input and displays a
 /// progress indicator with customizable colors and animation duration.
 class OrderTrackerZen extends StatelessWidget {
+  /// A list of tracker data.
   final List<TrackerData> tracker_data;
-  final Color? success_color,
-      background_color,
-      screen_background_color,
-      text_primary_color,
-      text_secondary_color;
+
+  /// The success color used in the widget.
+  final Color? success_color;
+
+  /// The background color used in the widget.
+  final Color? background_color;
+
+  /// The screen background color used in the widget.
+  final Color? screen_background_color;
+
+  /// The primary text color used in the widget.
+  final Color? text_primary_color;
+
+  /// The secondary text color used in the widget.
+  final Color? text_secondary_color;
+
+  /// The duration of the animation in milliseconds.
   final int animation_duration;
 
   /// Creates an OrderTrackerZen widget.
@@ -113,10 +136,26 @@ class OrderTrackerZen extends StatelessWidget {
 ///
 /// This widget displays a title, date, and details for a single order tracker item.
 class OrderTrackerListItem extends StatefulWidget {
+  /// The title and date widget of the main order status widget.
   final OrderTitleAndDate title;
+
+  /// A list of order tracker details.
   final List<OrderTrackerDetails>? detailListItems;
-  final Color? success_color, background_color, screen_background_color;
-  final bool isLastItem, showLine;
+
+  /// The success color used in the widget.
+  final Color? success_color;
+
+  /// The background color used in the widget.
+  final Color? background_color;
+
+  /// The screen background color used in the widget.
+  final Color? screen_background_color;
+
+  /// This is true if it is the last item in the list.
+  final bool isLastItem;
+
+  // This is true if the status line should be shown.
+  final bool showLine;
 
   /// Creates an OrderTrackerListItem widget.
   ///
@@ -232,8 +271,17 @@ class _OrderTrackerListItemState extends State<OrderTrackerListItem> {
 ///
 /// This widget displays a title and a datetime.
 class OrderTrackerDetails extends StatelessWidget {
-  final title, datetime;
-  final Color? text_primary_color, text_secondary_color;
+  /// The title of the order tracker details.
+  final title;
+
+  /// The datetime associated with the order tracker details.
+  final datetime;
+
+  /// The primary text color used in the widget.
+  final Color? text_primary_color;
+
+  /// The secondary text color used in the widget.
+  final Color? text_secondary_color;
 
   /// Creates an OrderTrackerDetails widget.
   ///
@@ -278,8 +326,17 @@ class OrderTrackerDetails extends StatelessWidget {
 ///
 /// This widget displays a title and a date.
 class OrderTitleAndDate extends StatelessWidget {
-  final title, date;
-  final Color? text_primary_color, text_secondary_color;
+  /// The title of the order tracker.
+  final title;
+
+  /// The date associated with the order tracker.
+  final date;
+
+  /// The primary text color used in the widget.
+  final Color? text_primary_color;
+
+  /// The secondary text color used in the widget.
+  final Color? text_secondary_color;
 
   /// Creates an OrderTitleAndDate widget.
   ///
