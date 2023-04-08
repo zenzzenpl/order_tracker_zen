@@ -2,9 +2,16 @@
 
 import 'package:flutter/material.dart';
 
+/// A data model representing a single tracker.
+///
+/// This model includes a title, date, and list of tracker details.
 class TrackerData {
   final String title, date;
   final List<TrackerDetails> tracker_details;
+
+  /// Creates a new tracker data instance.
+  ///
+  /// The [title], [date], and [tracker_details] must not be null.
   TrackerData({
     required this.title,
     required this.date,
@@ -12,14 +19,25 @@ class TrackerData {
   });
 }
 
+/// A data model representing the details of a tracker.
+///
+/// This model includes a title and a datetime.
 class TrackerDetails {
   final String title, datetime;
+
+  /// Creates a new tracker details instance.
+  ///
+  /// The [title] and [datetime] must not be null.
   TrackerDetails({
     required this.title,
     required this.datetime,
   });
 }
 
+/// A stateless widget that displays an order tracking progress.
+///
+/// This widget takes a list of `TrackerData` as input and displays a
+/// progress indicator with customizable colors and animation duration.
 class OrderTrackerZen extends StatelessWidget {
   final List<TrackerData> tracker_data;
   final Color? success_color,
@@ -28,6 +46,10 @@ class OrderTrackerZen extends StatelessWidget {
       text_primary_color,
       text_secondary_color;
   final int animation_duration;
+
+  /// Creates an OrderTrackerZen widget.
+  ///
+  /// The [tracker_data] must not be null, and the [animation_duration] must be a positive integer.
   const OrderTrackerZen({
     super.key,
     required this.tracker_data,
@@ -41,11 +63,13 @@ class OrderTrackerZen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Builds the list of tracker items
     return ListView.builder(
       physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemBuilder: (context, index) {
         var data = tracker_data[index];
+        // Animate the status line
         return TweenAnimationBuilder(
           tween: Tween<double>(
             begin: 0,
@@ -55,6 +79,7 @@ class OrderTrackerZen extends StatelessWidget {
             milliseconds: animation_duration * tracker_data.length,
           ),
           builder: (context, value, child) {
+            // Build the main tracker item
             return OrderTrackerListItem(
               success_color: success_color,
               background_color: background_color,
@@ -84,11 +109,18 @@ class OrderTrackerZen extends StatelessWidget {
   }
 }
 
+/// A stateful widget representing a single order tracker list item.
+///
+/// This widget displays a title, date, and details for a single order tracker item.
 class OrderTrackerListItem extends StatefulWidget {
   final OrderTitleAndDate title;
   final List<OrderTrackerDetails>? detailListItems;
   final Color? success_color, background_color, screen_background_color;
   final bool isLastItem, showLine;
+
+  /// Creates an OrderTrackerListItem widget.
+  ///
+  /// The [title] must not be null, [isLastItem] and [showLine] default to false.
   const OrderTrackerListItem({
     super.key,
     required this.title,
@@ -157,6 +189,7 @@ class _OrderTrackerListItemState extends State<OrderTrackerListItem> {
           key: rowKey,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+// Dot widget
             Container(
               width: 12,
               height: 12,
@@ -170,6 +203,7 @@ class _OrderTrackerListItemState extends State<OrderTrackerListItem> {
               ),
             ),
             SizedBox(width: 10),
+// Title and date widget
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -194,9 +228,16 @@ class _OrderTrackerListItemState extends State<OrderTrackerListItem> {
   }
 }
 
+/// A stateless widget representing the details of an order tracker.
+///
+/// This widget displays a title and a datetime.
 class OrderTrackerDetails extends StatelessWidget {
   final title, datetime;
   final Color? text_primary_color, text_secondary_color;
+
+  /// Creates an OrderTrackerDetails widget.
+  ///
+  /// The [title] and [datetime] must not be null.
   const OrderTrackerDetails({
     super.key,
     required this.title,
@@ -233,9 +274,16 @@ class OrderTrackerDetails extends StatelessWidget {
   }
 }
 
+/// A stateless widget representing the title and date of an order tracker.
+///
+/// This widget displays a title and a date.
 class OrderTitleAndDate extends StatelessWidget {
   final title, date;
   final Color? text_primary_color, text_secondary_color;
+
+  /// Creates an OrderTitleAndDate widget.
+  ///
+  /// The [title] and [date] must not be null.
   const OrderTitleAndDate({
     super.key,
     required this.title,
