@@ -2,8 +2,26 @@
 
 import 'package:flutter/material.dart';
 
+class TrackerData {
+  final String title, date;
+  final List<TrackerDetails> tracker_details;
+  TrackerData({
+    required this.title,
+    required this.date,
+    required this.tracker_details,
+  });
+}
+
+class TrackerDetails {
+  final String title, datetime;
+  TrackerDetails({
+    required this.title,
+    required this.datetime,
+  });
+}
+
 class OrderTrackerZen extends StatelessWidget {
-  final List tracker_list;
+  final List<TrackerData> tracker_data;
   final Color? success_color,
       background_color,
       screen_background_color,
@@ -12,7 +30,7 @@ class OrderTrackerZen extends StatelessWidget {
   final int animation_duration;
   const OrderTrackerZen({
     super.key,
-    required this.tracker_list,
+    required this.tracker_data,
     this.success_color,
     this.background_color,
     this.screen_background_color,
@@ -27,14 +45,14 @@ class OrderTrackerZen extends StatelessWidget {
       physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemBuilder: (context, index) {
-        var data = tracker_list[index];
+        var data = tracker_data[index];
         return TweenAnimationBuilder(
           tween: Tween<double>(
             begin: 0,
-            end: tracker_list.length.toDouble(),
+            end: tracker_data.length.toDouble(),
           ),
           duration: Duration(
-            milliseconds: animation_duration * tracker_list.length,
+            milliseconds: animation_duration * tracker_data.length,
           ),
           builder: (context, value, child) {
             return OrderTrackerListItem(
@@ -42,25 +60,25 @@ class OrderTrackerZen extends StatelessWidget {
               background_color: background_color,
               screen_background_color: screen_background_color,
               title: OrderTitleAndDate(
-                title: data["title"],
-                date: data["date"],
+                title: data.title,
+                date: data.date,
                 text_primary_color: text_primary_color,
                 text_secondary_color: text_secondary_color,
               ),
               detailListItems: [
-                for (var i = 0; i < data["tracker_details"].length; i++)
+                for (var i = 0; i < data.tracker_details.length; i++)
                   OrderTrackerDetails(
-                    title: data["tracker_details"][i]["title"],
-                    datetime: data["tracker_details"][i]["datetime"],
+                    title: data.tracker_details[i].title,
+                    datetime: data.tracker_details[i].datetime,
                   ),
               ],
-              isLastItem: index == tracker_list.length - 1,
+              isLastItem: index == tracker_data.length - 1,
               showLine: value > index,
             );
           },
         );
       },
-      itemCount: tracker_list.length,
+      itemCount: tracker_data.length,
       padding: EdgeInsets.zero,
     );
   }
