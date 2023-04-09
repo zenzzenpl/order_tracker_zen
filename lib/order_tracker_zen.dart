@@ -130,6 +130,8 @@ class OrderTrackerZen extends StatelessWidget {
                                   OrderTrackerDetails(
                                     title: data.tracker_details[i].title,
                                     datetime: data.tracker_details[i].datetime,
+                                    text_primary_color: text_primary_color,
+                                    text_secondary_color: text_secondary_color,
                                   ),
                               ],
                         isLastItem: index == tracker_data.length - 1,
