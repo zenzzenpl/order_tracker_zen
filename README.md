@@ -16,6 +16,7 @@ Make a fabulous order tracker for you e-commerce app is no time.
 | Use Custom Styles                                           | 👎🏻                  | ✅                |
 | Toggle bitween expanded and shrinked just with one variable | 👎🏻                  | ✅                |
 | Email Support By Zenzzen                                    | 👎🏻                  | ✅                |
+| Shrinkable                                                  | 👎🏻                  | ✅                |
 
 **Our team is always happy to help tech enthusiasts like you, you can email us on dev_support@zenzzen.com in case if you find any difficulty**
 
@@ -96,5 +97,6 @@ This is because it hardcoded data, in your case you must be using loops here. Ok
 - `screen_background_color` : Dot in progress bar has a small border, that must match background, that helps in same
 - `text_primary_color` : Primary text color
 - `text_secondary_color` : Seconday text color
+- `isShrinked` : This boolean toggles bitween shrinked and detailed view
 
 **This is what Zenzzen Team made for you specially 😊, Now it's your responsibility to make ground-breaking app that rocks 🤘🏻**

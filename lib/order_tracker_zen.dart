@@ -208,6 +208,7 @@ class _OrderTrackerListItemState extends State<OrderTrackerListItem> {
     return rowRenderBox?.size.height ?? 0.0;
   }
 
+  // This is the height of the row, it shall be initialized later in the build method.
   var rowHeight = 0.0;
 
   @override
@@ -253,7 +254,7 @@ class _OrderTrackerListItemState extends State<OrderTrackerListItem> {
           key: rowKey,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-// Dot widget
+            // Dot widget
             Container(
               width: 12,
               height: 12,
@@ -267,22 +268,34 @@ class _OrderTrackerListItemState extends State<OrderTrackerListItem> {
               ),
             ),
             SizedBox(width: 10),
-// Title and date widget
+            // Title and date widget
             Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  widget.title,
-                  widget.detailListItems == null
-                      ? SizedBox()
-                      : Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: widget.detailListItems!,
-                        ),
-                  widget.detailListItems == null
-                      ? SizedBox()
-                      : SizedBox(height: 13),
-                ],
+              child: TweenAnimationBuilder(
+                builder: (context, value, child) {
+                  return Opacity(
+                    opacity: value,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        widget.title,
+                        widget.detailListItems == null
+                            ? SizedBox()
+                            : Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: widget.detailListItems!,
+                              ),
+                        widget.detailListItems == null
+                            ? SizedBox()
+                            : SizedBox(height: 13),
+                      ],
+                    ),
+                  );
+                },
+                tween: Tween<double>(
+                  begin: 0.4,
+                  end: widget.showLine ? 1 : 0.4,
+                ),
+                duration: Duration(milliseconds: 500),
               ),
             ),
           ],

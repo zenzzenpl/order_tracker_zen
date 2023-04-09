@@ -36,4 +36,8 @@ Feature Updates
 
 # 1.0.0+1
 
-First Stable Release
+Added capabality to shrink
+
+# 1.0.0+2
+
+Opacity of order tracker deatils item shall now change according to tracking progress
