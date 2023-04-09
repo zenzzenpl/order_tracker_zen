@@ -286,7 +286,7 @@ class _OrderTrackerListItemState extends State<OrderTrackerListItem> {
                               ),
                         widget.detailListItems == null
                             ? SizedBox()
-                            : SizedBox(height: 13),
+                            : SizedBox(height: widget.isLastItem ? 0 : 13),
                       ],
                     ),
                   );
@@ -413,7 +413,8 @@ class OrderTitleAndDate extends StatelessWidget {
       ),
     ];
     return Padding(
-      padding: EdgeInsets.only(left: 8, right: 8, bottom: 8, top: 0),
+      padding: EdgeInsets.only(
+          left: 8, right: 8, bottom: isShrinked ? 0 : 8, top: 0),
       child: isShrinked
           ? Column(
               crossAxisAlignment: CrossAxisAlignment.start,

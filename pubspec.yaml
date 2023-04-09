@@ -1,7 +1,7 @@
 name: order_tracker_zen
 description: This is a Popular, Simple and Easy to use Flutter Order Tracking UI that Proudly made by Team Zenzzen
 
-version: 1.0.0+1
+version: 1.0.0+3
 
 environment:
   sdk: ">=2.19.6 <3.0.0"
@@ -18,4 +18,4 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-homepage: https://zenzzen.com/open-source-development/order-tracker-zen
+homepage: https://github.com/zenzzenpl/order_tracker_zen
